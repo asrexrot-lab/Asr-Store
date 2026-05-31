@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Asr Shop bd - Premium SMM Node</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="appRouter">
+        
+        <div id="globalNoticeModal" class="system-modal-overlay modal-hidden">
+            <div class="modal-surface-card">
+                <div class="modal-header-row">
+                    <h3><i class="fa-solid fa-bell text-gradient-orange"></i> Important Notice</h3>
+                    <button id="closeNoticeModalBtn" class="modal-close-x-btn">&times;</button>
+                </div>
+                <div id="noticeInteractiveBodyClick" class="modal-interactive-clickable-body">
+                    <p id="noticeDynamicTextContent">Loading platform announcement details...</p>
+                    <span class="action-redirect-badge-toast"><i class="fa-solid fa-arrow-up-right-from-square"></i> Tap to view details</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="authScreen" class="app-screen view-active">
+            <div class="mobile-frame-container">
+                <div class="brand-identity-hub">
+                    <div class="shop-logo-container"><i class="fa-solid fa-bag-shopping shop-bounce-icon"></i></div>
+                    <h1 class="brand-animated-text"><span>A</span><span>s</span><span>r</span>&nbsp;<span>S</span><span>h</span><span>o</span><span>p</span>&nbsp;<span class="gradient-accent">b</span><span class="gradient-accent">d</span></h1>
+                    <p class="brand-slogan">Premium SMM Provider Network</p>
+                </div>
+
+                <div class="segmented-auth-control">
+                    <button class="tab-toggle target-active" id="triggerSignIn">Log In</button>
+                    <button class="tab-toggle" id="triggerSignUp">Register</button>
+                </div>
+
+                <form id="coreAuthForm" class="smooth-step-form">
+                    <div class="form-input-field-group" id="inputNodeUsername" style="display: none; opacity: 0; max-height: 0px; margin-bottom: 0;">
+                        <label>Username</label>
+                        <div class="interactive-input-facade">
+                            <i class="fa-regular fa-user"></i>
+                            <input type="text" id="fieldUsername" placeholder="Enter username">
+                        </div>
+                    </div>
+
+                    <div class="form-input-field-group">
+                        <label>Email Address</label>
+                        <div class="interactive-input-facade">
+                            <i class="fa-regular fa-envelope"></i>
+                            <input type="email" id="fieldEmail" placeholder="Enter email" required>
+                        </div>
+                    </div>
+
+                    <div class="form-input-field-group">
+                        <label>Password</label>
+                        <div class="interactive-input-facade">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="password" id="fieldPassword" placeholder="Enter password" required>
+                        </div>
+                    </div>
+
+                    <div class="form-input-field-group" id="inputNodeReferral" style="display: none; opacity: 0; max-height: 0px; margin-bottom: 0;">
+                        <label>Referral Code (Optional ID)</label>
+                        <div class="interactive-input-facade">
+                            <i class="fa-solid fa-user-tag"></i>
+                            <input type="text" id="fieldReferralInput" placeholder="Enter referral tracking UID">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="action-submit-button-node" id="engineSubmitBtn">
+                        <span>Log In Now</span><i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </form>
+
+                <div id="federatedSocialIntegrationBlock">
+                    <div class="ui-separator-text"><span>Or alternative login</span></div>
+                    <div class="social-provider-flex-grid">
+                        <button type="button" class="social-platform-node" id="providerNodeGoogle">
+                            <i class="fa-brands fa-google google-colored-icon"></i><span>Google Login</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="dashboardScreen" class="app-screen view-hidden">
+            <header class="dashboard-global-header">
+                <div class="user-profile-badge-left">
+                    <div class="avatar-ring-indicator"><span id="userInitialNode">U</span></div>
+                    <div class="meta-profile-text">
+                        <h4 id="userProfileGreetingName">Customer Console</h4>
+                        <span class="user-tier-pill">Member</span>
+                    </div>
+                </div>
+                <button class="utility-icon-btn" id="actionTriggerLogout"><i class="fa-solid fa-power-off"></i></button>
+            </header>
+
+            <main class="dashboard-scrollable-body-container">
+                <div class="premium-financial-liquidity-card">
+                    <span class="crypto-meta-label">Current Account Balance</span>
+                    <h2 class="dynamic-numerical-balance"><span id="dashboardBalanceNode">0</span> tk</h2>
+                    <div class="card-footer-metrics-row">
+                        <div>
+                            <span class="sub-metric-title">Total Spent</span>
+                            <p class="sub-metric-value" id="dashboardSpentNode">0 tk</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dual-action-grid-navigation">
+                    <button id="navToAddMoneyBtn" class="dashboard-nav-card-node gold-gradient-border">
+                        <div class="nav-icon-logo-container back-orange">
+                            <i class="fa-solid fa-wallet"></i>
+                        </div>
+                        <span>Add Money</span>
+                    </button>
+                    <button id="navToReferralTrackerBtn" class="dashboard-nav-card-node teal-gradient-border">
+                        <div class="nav-icon-logo-container back-teal">
+                            <i class="fa-solid fa-share-nodes"></i>
+                        </div>
+                        <span>Referral Program</span>
+                    </button>
+                </div>
+
+                <div class="support-action-linkage-row">
+                    <button id="userTriggerSupportLinkBtn" class="support-action-banner-node">
+                        <div class="support-branding-wrapper">
+                            <i class="fa-brands fa-telegram telegram-logo-style"></i>
+                            <div class="support-meta-strings">
+                                <h5>Contact Live Support</h5>
+                                <p>Get quick resolution for any transaction issues</p>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-chevron-right support-arrow"></i>
+                    </button>
+                </div>
+
+                <section class="dashboard-module-card-surface">
+                    <h3 class="section-surface-title"><i class="fa-solid fa-cart-plus text-gradient-purple"></i> Place New Order</h3>
+                    <form id="smmExecutionForm">
+                        <div class="form-input-field-group">
+                            <label>Select Service</label>
+                            <div class="interactive-input-facade select-facade-arrow">
+                                <i class="fa-solid fa-list"></i>
+                                <select id="orderCategorySelector"></select>
+                            </div>
+                        </div>
+                        <div class="form-input-field-group">
+                            <label>Target URL / Link</label>
+                            <div class="interactive-input-facade">
+                                <i class="fa-solid fa-link"></i>
+                                <input type="url" id="orderTargetLinkInput" placeholder="Paste link endpoint target URL" required>
+                            </div>
+                        </div>
+                        <div class="form-input-field-group">
+                            <label>Quantity</label>
+                            <div class="interactive-input-facade">
+                                <i class="fa-solid fa-calculator"></i>
+                                <input type="number" id="orderVolumeQuantityInput" placeholder="Min 100" min="100" required>
+                            </div>
+                        </div>
+                        <div class="realtime-algorithmic-invoice-card">
+                            <div class="invoice-row"><span>Rate per 1,000 units</span><span id="invoiceRatePerThousand">0 tk</span></div>
+                            <div class="invoice-row main-total-row-divider"><span>Total Cost</span><span id="invoiceComputedNetCost">0 tk</span></div>
+                        </div>
+                        <button type="submit" class="action-submit-button-node">Place Order Request</button>
+                    </form>
+                </section>
+            </main>
+        </div>
+
+        <div id="addMoneyScreen" class="app-screen view-hidden">
+            <header class="dashboard-global-header">
+                <button class="utility-icon-btn return-nav-btn backToDashboard"><i class="fa-solid fa-arrow-left"></i></button>
+                <h4>Add Money Portal</h4>
+                <div style="width:36px;"></div>
+            </header>
+            <main class="dashboard-scrollable-body-container">
+                
+                <div class="admin-numbers-display-card-surface">
+                    <h5><i class="fa-solid fa-building-columns text-gradient-orange"></i> Official Platform Wallet Numbers</h5>
+                    <div class="number-row-metric"><span>bKash (Personal):</span> <strong id="walletDisplayBkash" class="click-to-copy">Loading...</strong></div>
+                    <div class="number-row-metric"><span>Nagad (Personal):</span> <strong id="walletDisplayNagad" class="click-to-copy">Loading...</strong></div>
+                    <div class="number-row-metric"><span>Rocket (Personal):</span> <strong id="walletDisplayRocket" class="click-to-copy">Loading...</strong></div>
+                    <p class="crypto-meta-label alert-label-padding">Send your money to the specified account number first, then submit the details below.</p>
+                </div>
+
+                <section class="dashboard-module-card-surface">
+                    <h3 class="section-surface-title"><i class="fa-solid fa-receipt text-gradient-purple"></i> Submit Payment Verification</h3>
+                    <form id="addMoneyRequestForm">
+                        <div class="form-input-field-group">
+                            <label>Select Payment Method</label>
+                            <div class="interactive-input-facade select-facade-arrow">
+                                <i class="fa-solid fa-money-check-dollar"></i>
+                                <select id="depositMethodSelector" required>
+                                    <option value="bKash">bKash Mobile Banking</option>
+                                    <option value="Nagad">Nagad Digital Wallet</option>
+                                    <option value="Rocket">Rocket Banking</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-input-field-group">
+                            <label>Amount Transferred (tk)</label>
+                            <div class="interactive-input-facade">
+                                <i class="fa-solid fa-coins"></i>
+                                <input type="number" id="depositAmountInput" placeholder="Min 20 tk" min="20" required>
+                            </div>
+                        </div>
+                        <div class="form-input-field-group">
+                            <label>Transaction ID (TxnID)</label>
+                            <div class="interactive-input-facade">
+                                <i class="fa-solid fa-fingerprint"></i>
+                                <input type="text" id="depositTxnInput" placeholder="Enter Transaction ID Reference" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="action-submit-button-node add-funds-btn">Submit Payment Request</button>
+                    </form>
+                </section>
+            </main>
+        </div>
+
+        <div id="referralSystemScreen" class="app-screen view-hidden">
+            <header class="dashboard-global-header">
+                <button class="utility-icon-btn return-nav-btn backToDashboard"><i class="fa-solid fa-arrow-left"></i></button>
+                <h4>Referral Network System</h4>
+                <div style="width:36px;"></div>
+            </header>
+            <main class="dashboard-scrollable-body-container">
+                <div class="premium-financial-liquidity-card referral-theme-gradient">
+                    <span class="crypto-meta-label">Your Account Referral Tracking ID Code</span>
+                    <div class="referral-sharing-row-wrapper">
+                        <h3 id="referralTrackingCodeDisplayNode">UID_LOADING</h3>
+                        <button id="copyReferralUidBtn" class="utility-icon-btn"><i class="fa-solid fa-copy"></i></button>
+                    </div>
+                    <p class="referral-promo-disclaimer">Share this ID code parameter with others. Receive <strong>2% structural cash commission earnings</strong> instantly into your credit asset wallet allocation single ledger row mapping system setup every time they register and perform an authorized approved deposit transaction.</p>
+                </div>
+            </main>
+        </div>
+
+        <div id="adminPanelScreen" class="app-screen view-hidden">
+            <header class="dashboard-global-header admin-header-theme">
+                <div class="user-profile-badge-left">
+                    <div class="admin-shield-icon-badge"><i class="fa-solid fa-user-shield"></i></div>
+                    <div class="meta-profile-text">
+                        <h4>Asr Root Terminal</h4>
+                        <span class="user-tier-pill admin-pill-color">System Administrator</span>
+                    </div>
+                </div>
+                <button class="utility-icon-btn" id="actionAdminLogout"><i class="fa-solid fa-sign-out-alt"></i></button>
+            </header>
+
+            <main class="dashboard-scrollable-body-container">
+                <section class="dashboard-module-card-surface admin-control-card-border">
+                    <h3 class="section-surface-title"><i class="fa-solid fa-bullhorn text-gradient-orange"></i> Live System Announcement Notice</h3>
+                    <form id="adminNoticeControlForm">
+                        <div class="form-input-field-group">
+                            <label>Notice Banner Message String Content</label>
+                            <input type="text" id="adminNoticeText" placeholder="Enter popup notification alert text..." required>
+                        </div>
+                        <div class="form-input-field-group">
+                            <label>Notice External Hyperlink Target Redirect Anchor URL</label>
+                            <input type="url" id="adminNoticeLink" placeholder="https://t.me/yourchannel" required>
+                        </div>
+                        <button type="submit" class="action-submit-button-node add-funds-btn">Publish Global Notice Update</button>
+                    </form>
+                </section>
+
+                <section class="dashboard-module-card-surface admin-control-card-border">
+                    <h3 class="section-surface-title"><i class="fa-solid fa-sliders text-gradient-teal"></i> Platform Gateway & Support Config</h3>
+                    <form id="adminPlatformGatewaysForm">
+                        <div class="form-input-field-group">
+                            <label>Official bKash Account Number</label>
+                            <input type="text" id="adminInputBkash" placeholder="Enter bKash account number" required>
+                        </div>
+                        <div class="form-input-field-group">
+                            <label>Official Nagad Account Number</label>
+                            <input type="text" id="adminInputNagad" placeholder="Enter Nagad account number" required>
+                        </div>
+                        <div class="form-input-field-group">
+                            <label>Official Rocket Account Number</label>
+                            <input type="text" id="adminInputRocket" placeholder="Enter Rocket account number" required>
+                        </div>
+                        <div class="form-input-field-group">
+                            <label>Minimum Add Money Required Limit (tk)</label>
+                            <input type="number" id="adminInputMinDeposit" placeholder="Default 20" min="1" required>
+                        </div>
+                        <div class="form-input-field-group">
+                            <label>Live Support Helpdesk Communication Target Anchor Link (Telegram/WhatsApp)</label>
+                            <input type="url" id="adminInputSupportLink" placeholder="https://t.me/your_helpdesk_bot" required>
+                        </div>
+                        <button type="submit" class="action-submit-button-node setup-service-btn">Update Gateways & Channel Records</button>
+                    </form>
+                </section>
+
+                <section class="dashboard-module-card-surface admin-control-card-border">
+                    <h3 class="section-surface-title"><i class="fa-solid fa-power-off text-gradient-orange"></i> Core System Power</h3>
+                    <div class="admin-matrix-toggle-row">
+                        <div class="toggle-meta-description">
+                            <h5>Online Platform State</h5>
+                            <p>Toggle off to lock access for all users immediately</p>
+                        </div>
+                        <label class="ios-switch-wrapper-node">
+                            <input type="checkbox" id="adminSwitchServerStatus" checked>
+                            <span class="ios-slider-knob"></span>
+                        </label>
+                    </div>
+                </section>
+
+                <section class="dashboard-module-card-surface">
+                    <h3 class="section-surface-title"><i class="fa-solid fa-folder-plus text-gradient-purple"></i> Manage SMM Services</h3>
+                    <form id="adminAddServiceForm">
+                        <div class="form-input-field-group"><input type="text" id="adminServiceName" placeholder="Service Title Name" required></div>
+                        <div class="form-input-field-group"><input type="number" id="adminServiceRate" placeholder="Price Rate per 1000 units (tk)" step="0.01" required></div>
+                        <button type="submit" class="action-submit-button-node setup-service-btn">Add New Service</button>
+                    </form>
+                    <div class="ui-separator-text"><span>Active Services Matrix</span></div>
+                    <ul class="admin-data-interactive-stream-list" id="adminActiveServicesContainer"></ul>
+                </section>
+
+                <section class="dashboard-module-card-surface">
+                    <h3 class="section-surface-title"><i class="fa-solid fa-hand-holding-dollar text-gradient-green"></i> Add Money Requests Log Ledger</h3>
+                    <ul class="admin-data-interactive-stream-list" id="adminDepositRequestsContainer"></ul>
+                </section>
+
+                <section class="dashboard-module-card-surface">
+                    <h3 class="section-surface-title"><i class="fa-solid fa-users-gear text-gradient-orange"></i> User Identity Core Profiles</h3>
+                    <div class="form-input-field-group">
+                        <div class="interactive-input-facade"><i class="fa-solid fa-search"></i><input type="email" id="adminUserSearchEmail" placeholder="Enter target profile email identity text"></div>
+                    </div>
+                    <div class="admin-user-operations-flex-grid">
+                        <button id="adminBtnBanUser" class="operation-pill-action ban-btn">Ban Account Access</button>
+                        <button id="adminBtnUnbanUser" class="operation-pill-action unban-btn">Remove Ban</button>
+                        <div class="bonus-appender-row-wrapper">
+                            <input type="number" id="adminBonusAmountInput" placeholder="Bonus amount (tk)">
+                            <button id="adminBtnGrantBonus" class="operation-pill-action bonus-btn">Grant Bonus</button>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="dashboard-module-card-surface">
+                    <h3 class="section-surface-title"><i class="fa-solid fa-rectangle-list text-gradient-purple"></i> Master Active Orders Ledger</h3>
+                    <div class="order-terminal-table-viewport-wrapper">
+                        <table class="admin-core-tabular-data-view">
+                            <thead><tr><th>User</th><th>Service</th><th>Link</th><th>Volume</th><th>Method Status</th></tr></thead>
+                            <tbody id="adminMasterOrdersTableContainer"></tbody>
+                        </table>
+                    </div>
+                </section>
+            </main>
+        </div>
+
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>
